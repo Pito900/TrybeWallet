@@ -10,7 +10,7 @@ export const currenciesFromAPI = async () => {
   const req = await fetch('https://economia.awesomeapi.com.br/json/all');
   const data = await req.json();
   // vamos criar o array correto sem a criptomoeda USDT
-  const currencyObj = Object.keys(data).filter((moeda) => moeda !== 'USDT');
+  const currencyObj = Object.keys(data).filter((m) => m !== 'USDT');
   // como já fiz em outros projetos, estou usando o filter para excluir o USDT
   return currencyObj;
 };

@@ -57,53 +57,90 @@ class ExpensiveForms extends React.Component {
 
       return (
         <div>
-          <input
-            type="text"
-            value={ value }
-            name="value"
-            onChange={ this.handleChange }
-            data-testid="value-input"
-          />
-          <input
-            type="text"
-            name="description"
-            value={ description }
-            onChange={ this.handleChange }
-            data-testid="description-input"
-          />
-          <select
-            label="currency"
+          <label htmlFor="value">
+            Valor
+            <input
+              id="value"
+              type="text"
+              value={ value }
+              name="value"
+              onChange={ this.handleChange }
+              data-testid="value-input"
+            />
+          </label>
+          <label htmlFor="description">
+            Descrição
+            <input
+              type="text"
+              name="description"
+              value={ description }
+              onChange={ this.handleChange }
+              data-testid="description-input"
+            />
+          </label>
+          <label htmlFor="currency">
+            Moeda
+            <select
+              id="currency"
+              name="currency"
+              value={ currency }
+              onChange={ this.handleChange }
+              data-testid="currency-input"
+            >
+              { currencies.map((moeda) => (
+                <option
+                  data-testid={ ` ${moeda} ` }
+                  key={ moeda }
+                >
+                  { moeda }
+                </option>))}
+            </select>
+          </label>
+          {/* <select
+            label="Moeda"
             name="currency"
             value={ currency }
             onChange={ this.handleChange }
             data-testid="currency-input"
           >
-            { currencies.map((moeda) => <option key={ moeda }>{moeda}</option>)}
-          </select>
-          <select
-            label="method"
-            name="method"
-            value={ method }
-            onChange={ this.handleChange }
-            data-testid="method-input"
-          >
-            { ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'].map((m) => (
-              <option key={ m }>{m}</option>
-            )) }
-          </select>
-          <select
-            label="pagamento"
-            name="tag"
-            value={ tag }
-            onChange={ this.handleChange }
-            data-testid="tag-input"
-          >
-            <option value="Alimentação">Alimentação</option>
-            <option value="Lazer">Lazer</option>
-            <option value="Trabalho">Trabalho</option>
-            <option value="Transporte">Transporte</option>
-            <option value="Saúde">Saúde</option>
-          </select>
+            { currencies.map((moeda) => (
+              <option
+                data-testid={ ` ${moeda} ` }
+                key={ moeda }
+              >
+                { moeda }
+              </option>))}
+          </select> */}
+          <label htmlFor="method">
+            Método ded Pagamento
+            <select
+              id="method"
+              name="method"
+              value={ method }
+              onChange={ this.handleChange }
+              data-testid="method-input"
+            >
+              { ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'].map((m) => (
+                <option key={ m }>{m}</option>
+              )) }
+            </select>
+          </label>
+          <label htmlFor="tag">
+            Tag
+            <select
+              id="tag"
+              name="tag"
+              value={ tag }
+              onChange={ this.handleChange }
+              data-testid="tag-input"
+            >
+              <option value="Alimentação">Alimentação</option>
+              <option value="Lazer">Lazer</option>
+              <option value="Trabalho">Trabalho</option>
+              <option value="Transporte">Transporte</option>
+              <option value="Saúde">Saúde</option>
+            </select>
+          </label>
           <button
             type="submit"
             onClick={ this.handleClick }
@@ -111,6 +148,7 @@ class ExpensiveForms extends React.Component {
             Adicionar despesa
 
           </button>
+
         </div>
       );
     }
